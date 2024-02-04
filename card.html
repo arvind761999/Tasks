@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card</title>
+    <style>
+       * {
+        
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Quicksand", sans-serif;
+      }
+
+      #card-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 99%;
+        margin: auto;
+        gap: 15px;
+      }
+
+      #card-container .product-card {
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 10px;
+        
+      }
+
+      #card-container .product-card h4{
+        color: #3867d6;
+      }
+
+      #card-container .product-card img {
+        width: 100%;
+        
+      }
+      #card-container .product-card h4 {
+        font-family: "Dancing Script", cursive;
+      }
+
+      @media only screen and (max-width: 600px) {
+        #card-container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
+        .card:hover {
+          background-color: orange;
+        }
+      }
+
+      @media only screen and (min-width: 601px) and (max-width: 1024px) {
+        #card-container {
+          background-color: #26de81;
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .product-card{
+          background-color: #fff;
+        }
+        .product-card:hover {
+          background-color: #fa8231;
+          color: #fff;
+        }
+
+        .product-card:hover h4{
+          color: #3867d6;
+        }
+      }
+
+      @media only screen and (min-width: 1024px) {
+        #card-container {
+          background-color: #26de81;
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .product-card{
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+        }
+        .product-card:hover {
+          background-color: #fa8231;
+          color: #fff;
+        }
+
+        .product-card:hover h4{
+          color: #3867d6;
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="card-container"></div>
+  </body>
+
+  <script>
+    let container = document.getElementById("card-container");
+    let cardItems = JSON.parse(localStorage.getItem("cardItems"));
+    let totalPrice = 0;
+    let displayCardItems = (cardItems) => {
+           cardItems.forEach((element) => {
+           totalPrice += element.price;
+           let card = document.createElement("div");
+           card.setAttribute("class", "product-card");
+
+           let img = document.createElement("img");
+           img.src = element.image;
+
+           let name = document.createElement("h3");
+           name.innerHTML = element.title;
+
+           let price = document.createElement("h4");
+           price.innerHTML = `Rs. ${element.price}`;
+           
+           card.append(img, name, price );
+
+           container.append(card);
+
+           });
+
+          
+           let totalPrice1 = document.createElement("h3");
+           totalPrice1.innerHTML = `Total Ammount: ₹${totalPrice}`;
+           container.append(totalPrice1);
+         };
+
+    displayCardItems(cardItems);
+    
+
+  </script>
+</html>
+
+
+
+
+

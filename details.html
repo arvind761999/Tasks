@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="details"></div>
+  </body>
+
+  <script>
+    
+    let details = document.getElementById("details");
+    let product = JSON.parse(localStorage.getItem("product"));
+    let img = document.createElement("img");
+    img.src = product.image;
+    let name = document.createElement("h1");
+    name.innerHTML = product.title;
+    let price = document.createElement("h1");
+    price.innerHTML = product.price;
+    let desc = document.createElement("p");
+    desc.innerHTML = product.description;
+    details.append(img, name, price, desc);
+
+  </script>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="details"></div>
+</body>
+
+<script>
+    let details = document.getElementById("details");
+    let products = JSON.parse(localStorage.getItem("products"));
+
+    let img = document.createElement("img");
+    img.src = products.image;
+
+
+    let name = document.createElement("h1");
+    name.innerHTML = products.title;
+
+    let price = document.createElement("h1");
+    price.innerHTML = products.price;
+
+    let desc = document.createElement("p");
+    desc.innerHTML = products.description;
+
+    details.append(img, name, price, desc);
+</script>
+
+
+</html> -->
